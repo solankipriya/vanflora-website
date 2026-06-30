@@ -1,0 +1,113 @@
+* { 
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box; 
+}
+
+body {
+    background-color: #0A120A; /* Deep Green */
+    color: #C1D0B5; /* Sage Green */
+    font-family: 'Inter', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    cursor: none; /* Hides default cursor to force spotlight discovery */
+    /* High-end matte paper texture overlay */
+    background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
+}
+
+/* Ambient Layered Breathing Background Glow */
+.background-product-glow {
+    position: absolute;
+    width: 60vw;
+    height: 60vw;
+    background: rgba(193, 208, 181, 0.05); 
+    filter: blur(140px);
+    border-radius: 50%;
+    z-index: 0;
+    animation: breathingGlow 14s infinite alternate ease-in-out;
+}
+
+@keyframes breathingGlow {
+    0% { 
+        transform: translate(-15%, -15%) scale(0.8); 
+        opacity: 0.3; 
+    }
+    50% { 
+        opacity: 0.8; 
+    }
+    100% { 
+        transform: translate(15%, 15%) scale(1.2); 
+        opacity: 0.3; 
+    }
+}
+
+/* Interactive Spotlight Flashlight Effect */
+#spotlight {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(193, 208, 181, 0.12) 0%, transparent 70%);
+    transform: translate(-50%, -50%);
+    pointer-events: none; /* Ensures mouse clicks pass directly through the element */
+    z-index: 10;
+}
+
+/* Content Layout */
+.main-wrapper { 
+    text-align: center; 
+    z-index: 1; 
+    padding: 20px;
+}
+
+.label {
+    text-transform: uppercase;
+    letter-spacing: 0.6rem;
+    font-size: 0.7rem;
+    display: block;
+    margin-bottom: 25px;
+    opacity: 0.6;
+}
+
+/* Title Glitch / Flicker Animation */
+.glitch {
+    font-size: clamp(2.5rem, 8vw, 5rem); /* Flawless sizing across mobile and desktop */
+    font-weight: 200;
+    letter-spacing: -3px;
+    margin-bottom: 25px;
+    animation: flicker 5s infinite ease-in-out;
+}
+
+@keyframes flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+    20%, 22%, 24%, 55% { opacity: 0.15; }
+}
+
+p {
+    font-size: 1.1rem;
+    letter-spacing: 0.3rem;
+    opacity: 0.4;
+    text-transform: lowercase;
+}
+
+/* Secret Message Reveal Styling */
+#secret-message {
+    position: absolute;
+    bottom: 15%;
+    color: #C1D0B5;
+    font-size: 0.8rem;
+    letter-spacing: 0.8rem;
+    opacity: 0;
+    transition: opacity 1s ease-in-out; /* Responsive 1s fade curve */
+    pointer-events: none;
+    z-index: 5;
+    text-align: center;
+    width: 100%;
+    padding: 0 20px;
+}
+
+#secret-message.revealed {
+    opacity: 0.7; /* Crisp visibility when idling */
+}
